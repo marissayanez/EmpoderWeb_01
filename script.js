@@ -17,25 +17,22 @@ function signUp(){
   document.getElementById("message").innerHTML = txt;
 }
 
-function init() 
-{
-  image = document.getElementById("fox");
-  image.style.position = "relative"
-}
-var id = null;
-function myMove() {
-  var elem = document.getElementById("fox");   
-  var pos = 0;
-  clearInterval(id);
-  id = setInterval(frame, 5);
-  function frame() {
-    if (pos == 350) {
-      clearInterval(id);
-    } else {
-      pos++; 
-      // elem.style.top = pos + "px"; 
-      elem.style.left = pos + "px"; 
+function myMove(){
+  var fox = document.getElementById("fox");
+  fox.style.position='relative';
+  
+  var position = 0;
+
+  setInterval(frame,5)
+
+  function frame(){
+    if(position==window.screen.width - 70|| position == window.screen.height - 1000) {
+      clearInterval(); //fox stops moving
+    }
+    else {
+      position=position+1;
+      fox.style.top = position + 'px';
+      fox.style.left = position + 'px';
     }
   }
 }
-window.onload = init;
